@@ -33,8 +33,8 @@ handleReset = () => {
         this.setState({counters});
     }
     render() { 
-        return ( 
-            <div>
+        return (            
+            <div>               
                 <button 
                 onClick={this.handleReset}
                 className="btn btn-primary btn-sm m-2">Reset</button>
@@ -45,10 +45,8 @@ handleReset = () => {
                  onIncrement ={this.handleIncrement} 
                  counter={counter}               
                  />
-                    
-                 
                  )}             
-            </div>
+            </div>            
          );
     }
 }
