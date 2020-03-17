@@ -6,8 +6,11 @@ import Dashboard from './components/dashboard';
 import About from './components/about';
 import Header from './components/header';
 import Counters from './components/counters';
-import User from './components/user/user';
+import AddUser from './components/user/user-add';
 import UserList from './components/user/userList';
+import Prompt from './components/functional-component';
+import MyDataBase from './components/myDatabase';
+
 class App extends Component {
   state = {  
     counters : [
@@ -60,10 +63,10 @@ render() {
         <Route exact path="/counters">
           <Counters />
         </Route>       
-        <Route path="/user-list" component={UserList}/>         
-         <Router path="/user">
-          <User/>
-        </Router> 
+        <Route path="/user-list" component={UserList}/>              
+        <Route path="/add-user" component={AddUser}></Route>
+        <Route path="/functional-component" component={Prompt}></Route>
+        <Route path="/my-database" component={MyDataBase}></Route>
       
       </Switch>
     </div>

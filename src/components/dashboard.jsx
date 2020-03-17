@@ -10,7 +10,7 @@ import {
 
 export default function Dashboard() {
   let { path, url } = useRouteMatch();
-
+debugger;
   return (
     <div>
       <h2>Dasboard</h2>     
@@ -26,25 +26,21 @@ export default function Dashboard() {
         </li>
       </ul>
 
-      <Switch>
-        <Route exact path={path}>
+      {/* <Switch> */}
+        <Route  path={path}>
           <h3>Please select a topic.</h3>
         </Route>
         <Route path={`${path}/:topicId`}>
           <Topic />
         </Route>
-      </Switch>
+      {/* </Switch> */}
     </div>
   );
 }
 
-function Topic() {debugger
-  // The <Route> that rendered this component has a
-  // path of `/topics/:topicId`. The `:topicId` portion
-  // of the URL indicates a placeholder that we can
-  // get from `useParams()`.
+function Topic() {
   let { topicId } = useParams();
-
+debugger;
   return (
     <div>
       <h3>{topicId}</h3>

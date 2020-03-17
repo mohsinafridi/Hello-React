@@ -32,13 +32,24 @@ const Header = () => {
             </Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="/user">
+            <Link className="nav-link" to="/add-user">
               User
             </Link>
           </li>
           <li className="nav-item">
             <Link className="nav-link" to="/user-list">
               Users
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link" to="/functional-component">
+              Function
+            </Link>
+          </li>
+
+          <li className="nav-item">
+            <Link className="nav-link" to="/my-database">
+              My DataBase
             </Link>
           </li>
         </ul>
