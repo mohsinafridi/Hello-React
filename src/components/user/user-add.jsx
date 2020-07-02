@@ -17,7 +17,7 @@ class AddUser extends Component {
     const user = {
       name: this.state.name
     };
-
+//http://localhost:60671/api/DCandidate
     axios
       .post("https://jsonplaceholder.typicode.com/users", { user })
       .then(res => {

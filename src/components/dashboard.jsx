@@ -1,19 +1,112 @@
 import React from "react";
-
 import {
+  BrowserRouter as Router,
   Switch,
   Route,
   Link,
   useParams,
-  useRouteMatch
+  useRouteMatch,
 } from "react-router-dom";
 
+// Since routes are regular React components, they
+// may be rendered anywhere in the app, including in
+// child elements.
+//
+// This helps when it's time to code-split your app
+// into multiple bundles because code-splitting a
+// React Router app is the same as code-splitting
+// any other React app.
+
 export default function Dashboard() {
+  return (
+    <Router>
+      <div>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/topics">Topics</Link>
+          </li>
+          <li>
+            <Link to="/mohsin">Mohsin Azam</Link>
+          </li>
+        </ul>
+
+        <hr />
+
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route path="/topics">
+            <Topics />
+          </Route>
+          <Route path="/mohsin">
+            <Mohsins />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
+  );
+}
+
+function Mohsins() {
   let { path, url } = useRouteMatch();
-debugger;
   return (
     <div>
-      <h2>Dasboard</h2>     
+      <h2>Mohsins</h2>
+      <ul>
+        <li>
+          <Link  to={`${url}/01`}>01</Link>
+        </li>
+        <li>
+          <Link  to={`${url}/02`}>02</Link>
+        </li>
+        <li>
+          <Link to={`${url}/03`}>03</Link>
+        </li>
+      </ul>
+
+      <Switch>
+        <Route exact path={path}>
+          <h3>Please select a Number.</h3>
+        </Route>
+        <Route path={`${path}/:number`}>
+          <Mohsin />
+        </Route>
+      </Switch>
+    </div>
+  );
+}
+
+function Mohsin() {
+  let { number } = useParams();
+
+  return (
+    <div>
+      <h3>The number is : {number}</h3>
+    </div>
+  );
+}
+
+function Home() {
+  return (
+    <div>
+      <h2>Home</h2>
+    </div>
+  );
+}
+
+function Topics() {
+  // The `path` lets us build <Route> paths that are
+  // relative to the parent route, while the `url` lets
+  // us build relative links.
+  let { path, url } = useRouteMatch();
+
+  return (
+    <div>
+      <h2>Topics</h2>
       <ul>
         <li>
           <Link to={`${url}/rendering`}>Rendering with React</Link>
@@ -26,24 +119,28 @@ debugger;
         </li>
       </ul>
 
-      {/* <Switch> */}
-        <Route  path={path}>
+      <Switch>
+        <Route exact path={path}>
           <h3>Please select a topic.</h3>
         </Route>
         <Route path={`${path}/:topicId`}>
           <Topic />
         </Route>
-      {/* </Switch> */}
+      </Switch>
     </div>
   );
 }
 
 function Topic() {
+  // The <Route> that rendered this component has a
+  // path of `/topics/:topicId`. The `:topicId` portion
+  // of the URL indicates a placeholder that we can
+  // get from `useParams()`.
   let { topicId } = useParams();
-debugger;
+
   return (
     <div>
-      <h3>{topicId}</h3>
+      <h3>Topics is : {topicId}</h3>
     </div>
   );
 }

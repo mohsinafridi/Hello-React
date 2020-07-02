@@ -1,8 +1,12 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
+import { useSelector } from "react-redux";
+
+
 // Stateless Functional Components
-const Header = () => {
+const Header = (state) => {
+const counter = useSelector(state => state.counter);
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <Link className="navbar-brand mb-0 h1" to="/">
@@ -23,7 +27,7 @@ const Header = () => {
           </li>
           <li className="nav-item">
             <Link className="nav-link" to="/about">
-              About
+              About - Cake
             </Link>
           </li>
           <li className="nav-item">
@@ -43,7 +47,7 @@ const Header = () => {
           </li>
           <li className="nav-item">
             <Link className="nav-link" to="/functional-component">
-              Function
+              Function - Redux
             </Link>
           </li>
 
@@ -52,6 +56,23 @@ const Header = () => {
               My DataBase
             </Link>
           </li>
+
+          <li className="nav-item">
+           <h3>Counter  {counter}</h3> 
+          </li>  
+
+          <li className="nav-item">
+            <Link className="nav-link" to="/create-user">
+              Create DB User
+            </Link>
+          </li>
+
+          <li className="nav-item">
+            <Link className="nav-link" to="/all-users">
+              All Users
+            </Link>
+          </li>
+              
         </ul>
 
         <span className="navbar-text">
@@ -70,8 +91,3 @@ const Header = () => {
 };
 
 export default Header;
-// export default function Header() {
-//   return (
-
-//   );
-// }

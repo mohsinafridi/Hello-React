@@ -7,9 +7,12 @@ import About from './components/about';
 import Header from './components/header';
 import Counters from './components/counters';
 import AddUser from './components/user/user-add';
-import UserList from './components/user/userList';
+//import UserList from './components/user/userList';
 import Prompt from './components/functional-component';
 import MyDataBase from './components/myDatabase';
+import CreateUser from "./components/reactstrap/CreateUser";
+import UserList from "./components/reactstrap/UserList";
+import EditUser from './components/reactstrap/EditUser';
 
 class App extends Component {
   state = {  
@@ -67,6 +70,12 @@ render() {
         <Route path="/add-user" component={AddUser}></Route>
         <Route path="/functional-component" component={Prompt}></Route>
         <Route path="/my-database" component={MyDataBase}></Route>
+
+        <Route path="/create-user" component={CreateUser}></Route>
+        <Route path="/all-users" component={UserList}></Route>
+        <Route path='/edit/:id' component={EditUser} /> 
+
+        
       
       </Switch>
     </div>
